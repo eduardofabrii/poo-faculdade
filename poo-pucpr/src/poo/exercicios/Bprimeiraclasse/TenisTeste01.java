@@ -11,8 +11,7 @@ public class TenisTeste01 {
 //        tenis01.colocar();
 //        tenis01.desamarrar();
         tenis01.imprimir();
-        tenis01.amarrar();
-        tenis01.colocar();
+        tenis01.desamarrar();
 
         tenis02.imprimir();
 
