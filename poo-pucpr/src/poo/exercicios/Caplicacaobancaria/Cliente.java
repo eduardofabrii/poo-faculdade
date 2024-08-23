@@ -6,7 +6,7 @@ public class Cliente {
     private String cpf;
     private String senha;
     private int idade;
-    
+
 
     public String getNome() {
         return nome;
