@@ -1,4 +1,4 @@
-package poo.exercicios.Caplicacaobancaria.dominio;
+package poo.exercicios.Caplicacaobancaria;
 
 public class Main {
     public static void main(String[] args) {
