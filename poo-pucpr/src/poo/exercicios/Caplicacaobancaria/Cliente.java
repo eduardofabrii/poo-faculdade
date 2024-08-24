@@ -6,7 +6,7 @@ public class Cliente {
     private String cpf;
     private String senha;
     private int idade;
-
+    private boolean contaAtiva;
 
     public String getNome() {
         return nome;
@@ -46,5 +46,13 @@ public class Cliente {
 
     public void setIdade(int idade) {
         this.idade = idade;
+    }
+
+    public boolean isContaAtiva() {
+        return contaAtiva;
+    }
+
+    public void setContaAtiva(boolean contaAtiva) {
+        this.contaAtiva = contaAtiva;
     }
 }
