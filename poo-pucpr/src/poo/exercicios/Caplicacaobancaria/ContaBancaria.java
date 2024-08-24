@@ -5,8 +5,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class ContaBancaria {
-    ArrayList<String> bancoDeCadastros = new ArrayList<>();
-    private static boolean contaAtiva = false;
+    ArrayList<ArrayList<String>> bancoDeCadastros = new ArrayList<ArrayList<String>>();
     private double saldo = 0;
     private double limiteCartaoCredito;
     private double scoreCliente = 0;
@@ -16,7 +15,6 @@ public class ContaBancaria {
     public void menu() {
         boolean loop = true;
         Scanner sc = new Scanner(System.in);
-        Cliente cliente = new Cliente();
 
         while (loop) {
             System.out.println("(1) | Cadastro");
@@ -69,102 +67,104 @@ public class ContaBancaria {
 
     public int geradorDeNumeroDeConta(int min, int max) {
         Random rand = new Random();
-
-        int randomNum = rand.nextInt((max - min) + 1) + min;
-
-        return randomNum;
+        return rand.nextInt((max - min) + 1) + min;
     }
-
 
     public void cadastrar() {
         ArrayList<String> cadastroCliente = new ArrayList<>();
         numeroDeConta = geradorDeNumeroDeConta(10000, 15000);
-        Scanner sc = new Scanner(System.in);
-
         String nome = "", email = "", senha = "", cpf = "";
         int idade = 0;
+        Scanner sc = new Scanner(System.in);
 
-        while (!contaAtiva) {
-            while (nome.isEmpty()) {
-                System.out.print("Nome Completo: ");
-                nome = sc.nextLine().trim();
-                if (!nome.matches("[a-zA-Z\\s]+")) {
-                    nome = "";
-                    System.out.println("Nome inválido. Use apenas letras e espaços.");
-                }
+        if (cliente.isContaAtiva()) {
+            System.out.print("Você já possui uma conta ativa. Deseja abrir outra conta? [S/N]: ");
+            String resposta = sc.nextLine().trim().toUpperCase();
+
+            if (!resposta.equals("S")) {
+                System.out.println("Operação cancelada.");
+                return;
             }
-
-            while (email.isEmpty()) {
-                System.out.print("Email (formato x@y.com): ");
-                email = sc.nextLine().trim();
-                if (!email.contains("@") || !email.contains(".")) {
-                    email = "";
-                    System.out.println("Email inválido.");
-                }
-            }
-
-            while (senha.isEmpty()) {
-                System.out.print("Senha: ");
-                senha = sc.nextLine().trim();
-                if (senha.length() < 6 || !senha.matches(".*[a-zA-Z].*") || !senha.matches(".*\\d.*")) {
-                    senha = "";
-                    System.out.println("Senha inválida. Deve ter pelo menos 6 caracteres e incluir letras e números.");
-                }
-            }
-
-            while (cpf.isEmpty()) {
-                System.out.print("CPF (formato ###.###.###-##): ");
-                cpf = sc.nextLine().trim();
-                if (!cpf.matches("\\d{3}\\.\\d{3}\\.\\d{3}-\\d{2}")) {
-                    cpf = "";
-                    System.out.println("CPF inválido. Use o formato ###.###.###-##.");
-                }
-            }
-
-            while (idade <= 0) {
-                System.out.print("Idade: ");
-                while (!sc.hasNextInt()) {
-                    System.out.println("Entrada inválida. Digite um número inteiro para a idade.");
-                    sc.next();
-                    System.out.print("Idade: ");
-                }
-                idade = sc.nextInt();
-                sc.nextLine();
-                if (idade <= 0) {
-                    System.out.println("Idade deve ser um número positivo.");
-                }
-            }
-
-            cadastroCliente.add(nome);
-            cadastroCliente.add(email);
-            cadastroCliente.add(senha);
-            cadastroCliente.add(cpf);
-            cadastroCliente.add(String.valueOf(idade));
-            cadastroCliente.add(String.valueOf(numeroDeConta));
-
-            cliente.setNome(nome);
-            cliente.setEmail(email);
-            cliente.setSenha(senha);
-            cliente.setCpf(cpf);
-            cliente.setIdade(idade);
-
-            bancoDeCadastros.add(String.valueOf(cadastroCliente));
-
-            System.out.println("Conta criada com sucesso!");
-            System.out.println("O número da sua conta é: " + this.numeroDeConta);
-
-            contaAtiva = true;
         }
+
+        while (nome.isEmpty()) {
+            System.out.print("Nome Completo: ");
+            nome = sc.nextLine().trim();
+            if (!nome.matches("[a-zA-Z\\s]+")) {
+                nome = "";
+                System.out.println("Nome inválido. Use apenas letras e espaços.");
+            }
+        }
+
+        while (email.isEmpty()) {
+            System.out.print("Email (formato x@y.com): ");
+            email = sc.nextLine().trim();
+            if (!email.contains("@") || !email.contains(".")) {
+                email = "";
+                System.out.println("Email inválido.");
+            }
+        }
+
+        while (senha.isEmpty()) {
+            System.out.print("Senha: ");
+            senha = sc.nextLine().trim();
+            if (senha.length() < 6 || !senha.matches(".*[a-zA-Z].*") || !senha.matches(".*\\d.*")) {
+                senha = "";
+                System.out.println("Senha inválida. Deve ter pelo menos 6 caracteres e incluir letras e números.");
+            }
+        }
+
+        while (cpf.isEmpty()) {
+            System.out.print("CPF (formato ###.###.###-##): ");
+            cpf = sc.nextLine().trim();
+            if (!cpf.matches("\\d{3}\\.\\d{3}\\.\\d{3}-\\d{2}")) {
+                cpf = "";
+                System.out.println("CPF inválido. Use o formato ###.###.###-##.");
+            }
+        }
+
+        while (idade <= 0) {
+            System.out.print("Idade: ");
+            while (!sc.hasNextInt()) {
+                System.out.println("Entrada inválida. Digite um número inteiro para a idade.");
+                sc.next();
+                System.out.print("Idade: ");
+            }
+            idade = sc.nextInt();
+            sc.nextLine();
+            if (idade <= 0) {
+                System.out.println("Idade deve ser um número positivo.");
+            }
+        }
+
+        cadastroCliente.add(nome);
+        cadastroCliente.add(email);
+        cadastroCliente.add(senha);
+        cadastroCliente.add(cpf);
+        cadastroCliente.add(String.valueOf(idade));
+        cadastroCliente.add(String.valueOf(numeroDeConta));
+
+        cliente.setNome(nome);
+        cliente.setEmail(email);
+        cliente.setSenha(senha);
+        cliente.setCpf(cpf);
+        cliente.setIdade(idade);
+        cliente.setContaAtiva(true);
+
+        bancoDeCadastros.add(cadastroCliente);
+
+        System.out.println("Conta criada com sucesso!");
+        System.out.println("O número da sua conta é: " + numeroDeConta);
     }
 
+
     public void verBancoDeCadastros() {
-        System.out.println("Banco de Cadastros: ");
-        System.out.println(bancoDeCadastros);
+        System.out.println("Banco de Cadastros: " + bancoDeCadastros);
     }
 
     public void depositar() {
         Scanner sc = new Scanner(System.in);
-        if (contaAtiva) {
+        if (cliente.isContaAtiva()) {
             System.out.print("Quanto deseja depositar: ");
             this.saldo += sc.nextFloat();
             scoreCliente += 2;
@@ -178,7 +178,7 @@ public class ContaBancaria {
 
     public void sacar() {
         Scanner sc = new Scanner(System.in);
-        if (contaAtiva) {
+        if (cliente.isContaAtiva()) {
             if (this.saldo > 0) {
                 System.out.print("Quanto deseja sacar: ");
                 saldo -= sc.nextDouble();
@@ -193,7 +193,7 @@ public class ContaBancaria {
     }
 
     public void verificarSaldo() {
-        if (contaAtiva) {
+        if (cliente.isContaAtiva()) {
             System.out.println("Saldo: R$" + this.saldo);
         } else {
             System.out.println("Você ainda não tem cadastro");
@@ -247,7 +247,7 @@ public class ContaBancaria {
     public void alterarInfosPessoais() {
         Scanner sc = new Scanner(System.in);
 
-        if (contaAtiva) {
+        if (cliente.isContaAtiva()) {
             System.out.println("(1) | Alterar Nome");
             System.out.println("(2) | Alterar Email");
             System.out.println("(3) | Alterar Senha");
@@ -272,7 +272,7 @@ public class ContaBancaria {
 
     public void verInfosPessoais() {
         Scanner sc = new Scanner(System.in);
-        if (contaAtiva) {
+        if (cliente.isContaAtiva()) {
             String nome = cliente.getNome();
             String email = cliente.getEmail();
             String senha = cliente.getSenha();
@@ -302,7 +302,7 @@ public class ContaBancaria {
     }
 
     private void imprimirExtrato() {
-        if (contaAtiva) {
+        if (cliente.isContaAtiva()) {
             System.out.println("Numero da conta: " + this.numeroDeConta);
             System.out.println("Dono: " + cliente.getNome());
             System.out.println("CPF: " + cliente.getCpf());
@@ -316,7 +316,7 @@ public class ContaBancaria {
     private void menuCartaoCredito() {
         Scanner sc = new Scanner(System.in);
 
-        if (contaAtiva) {
+        if (cliente.isContaAtiva()) {
             System.out.println("Para abrir um cartão de crédito: \n" +
                     "1. Você precisa ser maior de idade \n" +
                     "2. Você precisa ter score maior que dez \n" +
@@ -337,7 +337,7 @@ public class ContaBancaria {
     }
 
     private void abrirCartaoCredito() {
-        if (contaAtiva) {
+        if (cliente.isContaAtiva()) {
             if (cliente.getIdade() >= 18)
                 if (scoreCliente >= 10) {
                     System.out.println("Cartão aberto!");
