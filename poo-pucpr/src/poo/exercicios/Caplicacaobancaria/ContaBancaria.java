@@ -10,6 +10,7 @@ public class ContaBancaria {
     private double limiteCartaoCredito;
     private double scoreCliente = 0;
     private static int numeroDeConta;
+//    Um cliente tem uma conta bancaria ↓ Isso deveria estar dentro da classe Cliente como ContaBancaria
     private Cliente cliente = new Cliente();
 
     public void menu() {
