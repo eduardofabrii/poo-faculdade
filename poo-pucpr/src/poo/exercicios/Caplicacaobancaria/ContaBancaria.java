@@ -66,7 +66,7 @@ public class ContaBancaria {
         }
     }
 
-    public int geradorDeNumeroDeConta(int min, int max) {
+    private int geradorDeNumeroDeConta(int min, int max) {
         Random rand = new Random();
         return rand.nextInt((max - min) + 1) + min;
     }
