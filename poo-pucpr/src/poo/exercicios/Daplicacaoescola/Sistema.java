@@ -54,7 +54,7 @@ public class Sistema {
 
             switch (escolha) {
                 case 1:
-                    System.out.println("---- Matrícula de Aluno ----");
+                    System.out.println("Matrícula de Aluno");
 
                     System.out.print("Nome: ");
                     sc.nextLine();
@@ -93,7 +93,7 @@ public class Sistema {
                     }
 
                     if (alunoEncontrado != null) {
-                        System.out.print("Você deseja ver o DIA[0], MÊS[1] ou ANO[2]: ");
+                        System.out.print("Você deseja ver o dia[0], mês[1] ou ano[2]: ");
                         int indice = sc.nextInt();
 
                         String parteData = alunoEncontrado.getDataDeNascimentoParte(0, indice);
@@ -242,6 +242,7 @@ public class Sistema {
     }
 
     public void pesquisarDisciplina(String nomeDisciplina) {
+        inicializarDisciplinas();
         for (Disciplina disciplina : disciplinas) {
             if (disciplina.getNome().equalsIgnoreCase(nomeDisciplina)) {
                 System.out.println("Disciplina encontrada: ");
@@ -258,6 +259,10 @@ public class Sistema {
 
 
     public void bancoDeCadastros() {
+        if (alunos.isEmpty()) {
+            System.out.println("Nenhum aluno cadastrado");
+        }
+
         for (int i = 0; i < alunos.size(); i++) {
             Aluno aluno = alunos.get(i);
             System.out.println(aluno.toString());
