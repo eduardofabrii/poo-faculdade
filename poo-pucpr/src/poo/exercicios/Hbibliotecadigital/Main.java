@@ -16,9 +16,6 @@ public class Main {
         VideoDigital videoDigital3 = new VideoDigital("Apple Developer Academy", "Video de Inscrição");
         VideoDigital videoDigital4 = new VideoDigital("Eduardo Fabri", "Como eu entrei na Apple Developer Academy em 2024?");
 
-        Visualizavel visualizavel;
-        visualizavel = videoDigital1;
-
         ItemBibliotecaDigital item = ebook1;
         item.visualizar();
         item.baixar();
@@ -30,6 +27,8 @@ public class Main {
         item.visualizar();
         item.baixar();
         System.out.println(item.descricao());
+
+
 
     }
 }
