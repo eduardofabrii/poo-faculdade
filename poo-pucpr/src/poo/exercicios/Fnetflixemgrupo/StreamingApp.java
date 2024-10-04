@@ -1,6 +1,7 @@
 package poo.exercicios.Fnetflixemgrupo;
 
 import poo.exercicios.Fnetflixemgrupo.plataforma.Plataforma;
+import poo.exercicios.Fnetflixemgrupo.streaming.Serie;
 import poo.exercicios.Fnetflixemgrupo.streaming.Streaming;
 import poo.exercicios.Fnetflixemgrupo.usuario.Usuario;
 
@@ -14,6 +15,7 @@ public class StreamingApp {
     Plataforma plataforma = new Plataforma();
 
     public void menuInicial() {
+
         Scanner sc = new Scanner(System.in);
         while (true) {
             System.out.println

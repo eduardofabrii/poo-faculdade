@@ -3,6 +3,11 @@ package poo.exercicios.Fnetflixemgrupo.streaming;
 public class Filme extends Streaming {
     private String diretor;
 
+    public Filme(String titulo, String genero, int classificacaoEtaria, String lancamento, int duracao, String diretor) {
+        super(titulo, genero, classificacaoEtaria, lancamento, duracao);
+        this.diretor = diretor;
+    }
+
     public Filme(String titulo, int duracao, String genero, int classificacaoEtaria, String diretor) {
         super(titulo, duracao, genero, classificacaoEtaria);
         this.diretor = diretor;

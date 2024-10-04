@@ -9,20 +9,13 @@ import poo.exercicios.Fnetflixemgrupo.usuario.Usuario;
 import java.util.ArrayList;
 
 public class Plataforma {
-    private String nome;
+    // Plataforma == Utils
     private ArrayList<Usuario> usuarios = new ArrayList<>();
-    private ArrayList<Streaming> conteudos = new ArrayList<>(); // filmes e series
-    private Filme filme = new Filme();
-    private Serie serie = new Serie();
+    private ArrayList<Streaming> conteudos = new ArrayList<>();
 
-    public Plataforma(String nome, ArrayList<Usuario> usuarios, ArrayList<Streaming> conteudos) {
-        this.nome = nome;
+    public Plataforma(ArrayList<Usuario> usuarios, ArrayList<Streaming> conteudos) {
         this.usuarios = usuarios;
         this.conteudos = conteudos;
-    }
-
-    public Plataforma(String nome) {
-        this.nome = nome;
     }
 
     public Plataforma() {
@@ -70,6 +63,20 @@ public class Plataforma {
         System.out.println("Usuario atualizado com sucesso!");
     }
 
+    public void seriesPadroes() {
+        Serie serie1 = new Serie("As Tranças de um Careca", "Comédia", 14, "2010", 1300, 280, 30);
+        Serie serie2 = new Serie("Game of Thrones", "Fantasia", 8, "2011", 4500, 73, 60);
+        Serie serie3 = new Serie("Breaking Bad", "Drama", 5, "2008", 2000, 62, 42);
+        Serie serie4 = new Serie("Stranger Things", "Suspense", 4, "2016", 1600, 34, 45);
+        Serie serie5 = new Serie("Friends", "Comédia", 10, "1994", 2360, 236, 25);
+
+        conteudos.add(serie1);
+        conteudos.add(serie2);
+        conteudos.add(serie3);
+        conteudos.add(serie4);
+        conteudos.add(serie5);
+
+    }
 
     public void exibirConteudos() {
         if (conteudos.isEmpty()) {

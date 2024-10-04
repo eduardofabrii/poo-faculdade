@@ -8,15 +8,6 @@ public class Usuario {
     private String email;
     private String senha;
     private String dataNascimento;
-    private Pagamento pagamento;
-
-    public Usuario(String nome, String email, String senha, String dataNascimento, Pagamento pagamento) {
-        this.nome = nome;
-        this.email = email;
-        this.senha = senha;
-        this.dataNascimento = dataNascimento;
-        this.pagamento = pagamento;
-    }
 
     public Usuario(String nome, String email, String senha, String dataNascimento) {
         this.nome = nome;
@@ -25,9 +16,10 @@ public class Usuario {
         this.dataNascimento = dataNascimento;
     }
 
-    public Usuario(String nome, String email) {
+    public Usuario(String nome, String email, String senha) {
         this.nome = nome;
         this.email = email;
+        this.senha = senha;
     }
 
     public Usuario() {
@@ -39,8 +31,7 @@ public class Usuario {
                 "Nome: " + nome + " | " +
                 "Email: " + email + " | " +
                 "Senha: " + senha + " | " +
-                "Data Nascimento: " + dataNascimento + " | " +
-                "Pagamento: " + pagamento;
+                "Data Nascimento: " + dataNascimento ;
     }
 
     public String getNome() {
@@ -73,13 +64,5 @@ public class Usuario {
 
     public void setDataNascimento(String dataNascimento) {
         this.dataNascimento = dataNascimento;
-    }
-
-    public Pagamento getPagamento() {
-        return pagamento;
-    }
-
-    public void setPagamento(Pagamento pagamento) {
-        this.pagamento = pagamento;
     }
 }

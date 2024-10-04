@@ -7,6 +7,14 @@ public class Streaming {
     private String lancamento;
     private int duracao;
 
+    public Streaming(String titulo, String genero, int classificacaoEtaria, String lancamento, int duracao) {
+        this.titulo = titulo;
+        this.genero = genero;
+        this.classificacaoEtaria = classificacaoEtaria;
+        this.lancamento = lancamento;
+        this.duracao = duracao;
+    }
+
     public Streaming(String titulo, int duracao, String genero, int classificacaoEtaria) {
         this.titulo = titulo;
         this.duracao = duracao;

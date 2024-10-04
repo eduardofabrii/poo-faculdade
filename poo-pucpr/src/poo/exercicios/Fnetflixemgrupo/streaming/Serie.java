@@ -4,13 +4,14 @@ public class Serie extends Streaming {
     private int temporadas;
     private int episodios;
 
-    public Serie(String titulo, int duracao, String genero, int classificacaoEtaria, int temporadas, int episodios) {
-        super(titulo, duracao, genero, classificacaoEtaria);
+    public Serie(String titulo, String genero, int classificacaoEtaria, String lancamento, int duracao, int temporadas, int episodios) {
+        super(titulo, genero, classificacaoEtaria, lancamento, duracao);
         this.temporadas = temporadas;
         this.episodios = episodios;
     }
 
-    public Serie() {}
+    public Serie() {
+    }
 
     @Override
     public String toString() {
