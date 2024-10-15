@@ -27,8 +27,5 @@ public class Main {
         item.visualizar();
         item.baixar();
         System.out.println(item.descricao());
-
-
-
     }
 }
